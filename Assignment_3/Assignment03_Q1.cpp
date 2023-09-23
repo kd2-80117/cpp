@@ -13,14 +13,23 @@ class Box
     float height;
 
 public:
+    Box()
+    {
+    }
+    Box(float length, float width, float height)
+    {
+        this->length = length;
+        this->width = width;
+        this->height = height;
+    }
     void acceptParameter()
     {
         cout << "Enter length of box: ";
-        cin >> length;
+        cin >> this->length;
         cout << "Enter width of box: ";
-        cin >> width;
+        cin >> this->width;
         cout << "Enter height of box: ";
-        cin >> height;
+        cin >> this->height;
     }
     void displayParameter()
     {
