@@ -1,4 +1,4 @@
- /********************************** ASSIGNMENT 3 QUESTION 2 ***********************************/
+/********************************** ASSIGNMENT 3 QUESTION 2 ***********************************/
 
 // Q3. Write a class to find volume of a Cylinder by using following members.
 //(volume of Cylinder=3.14 * radius * radius *height)
@@ -23,12 +23,14 @@ class Cylinder
     double height;
 
 public:
-    Cylinder()
+    // Ctor members initializer list
+    Cylinder() : radius(0), height(0)
     {
-        this->radius = 0;
-        this->radius = 0;
+        // this->radius = 0;
+        // this->height = 0;
     }
-    Cylinder(double radius, double height)
+    // Ctor members initializer list
+    Cylinder(double radius, double height) : radius(radius), height(height)
     {
         this->radius = radius;
         this->height = height;
@@ -59,7 +61,8 @@ public:
     }
 };
 
-enum Emenu{
+enum Emenu
+{
     Exit,
     Accept_RADIUS,
     DISPLAY_RADIUS,
@@ -68,7 +71,7 @@ enum Emenu{
     CALCULATE_VOLUME
 };
 
-Emenu menu() 
+Emenu menu()
 {
     int choice;
     cout << endl
@@ -86,7 +89,6 @@ Emenu menu()
          << "**************************" << endl;
     return Emenu(choice);
 }
-
 
 int main()
 {
