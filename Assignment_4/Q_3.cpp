@@ -44,53 +44,78 @@ public:
     }
     void printMatrix()
     {
+        cout << endl
+             << "Matrix is " << endl;
         for (int i = 0; i < length; i++)
         {
             for (int j = 0; j < length; j++)
             {
-                cout << arr[i][j] << "  ";
+                cout << arr[i][j] << "\t";
             }
             cout << endl;
         }
     }
     void addMatrix(Matrix m2)
     {
-        cout << "Addition of 2 matrix is " << endl;
+        cout << endl
+             << "Addition of 2 matrix is " << endl;
         for (int i = 0; i < length; i++)
         {
             for (int j = 0; j < length; j++)
             {
 
                 cout << arr[i][j] + m2.arr[i][j]
-                     << "  ";
+                     << "\t";
             }
             cout << endl;
         }
     }
     void subMatrix(Matrix m2)
     {
-        cout << "Subtraction of 2 matrix is " << endl;
+        cout << endl
+             << "Subtraction of 2 matrix is " << endl;
         for (int i = 0; i < length; i++)
         {
             for (int j = 0; j < length; j++)
             {
 
                 cout << arr[i][j] - m2.arr[i][j]
-                     << "  ";
+                     << "\t";
             }
             cout << endl;
         }
     }
     void mulMatrix(Matrix m2)
     {
-        cout << "Multipilcation of 2 matrix is " << endl;
+        Matrix result;
+
+        cout << endl
+             << "Multipilcation of 2 matrix is " << endl;
         for (int i = 0; i < length; i++)
         {
             for (int j = 0; j < length; j++)
             {
-
-                cout << (arr[i][i] * m2.arr[i][j]) + (arr[i][j] * arr[j][i])
-                     << "  ";
+                int val = 0;
+                for (int k = 0; k < length; k++)
+                {
+                    val = val + (this->arr[i][k] * m2.arr[k][j]);
+                }
+                result.arr[i][j] = val;
+                cout << result.arr[i][j]
+                     << "\t";
+            }
+            cout << endl;
+        }
+    }
+    void transpose()
+    {
+        cout << endl
+             << "Transpose of matrix is " << endl;
+        for (int i = 0; i < length; i++)
+        {
+            for (int j = 0; j < length; j++)
+            {
+                cout << arr[j][i] << "\t";
             }
             cout << endl;
         }
@@ -110,4 +135,5 @@ int main()
     m1.addMatrix(m2);
     m1.subMatrix(m2);
     m1.mulMatrix(m2);
+    m1.transpose();
 }

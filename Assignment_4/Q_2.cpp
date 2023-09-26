@@ -13,17 +13,20 @@ class Stack
 {
     int size;
     int top;
+    int element;
     int *sptr;
 
 public:
     Stack()
     {
         this->size = 5;
+        this->top = -1;
     }
     Stack(int size)
     {
-        // this->size = size;
+        this->size = size;
         sptr = new int[this->size];
+        this->top = -1;
     }
     ~Stack()
     {
@@ -37,7 +40,6 @@ public:
         }
         else
         {
-            int element;
             cout << "Enter element: ";
             cin >> element;
             top = top + 1;
@@ -76,7 +78,7 @@ public:
     }
     bool isFull()
     {
-        if (top == size - 1)
+        if (top == this->size - 1)
         {
             cout << "Stack is full." << endl;
             return true;
@@ -90,7 +92,7 @@ public:
     void print()
     {
 
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i <= top; i++)
         {
             cout << "Stack Element at " << i << " is " << sptr[i] << endl;
         }
@@ -101,13 +103,12 @@ int menu()
     int choice;
     cout << "****** Menu *********" << endl;
     cout << "0. Exit from menu" << endl;
-    cout << "1. Initialize Stack" << endl;
-    cout << "2. Push Element" << endl;
-    cout << "3. Pop Element" << endl;
-    cout << "4. Print Element" << endl;
-    cout << "5. Peek Element" << endl;
-    cout << "6. Is Stack Empty?" << endl;
-    cout << "7. Is Stack Full?" << endl;
+    cout << "1. Push Element" << endl;
+    cout << "2. Pop Element" << endl;
+    cout << "3. Print Element" << endl;
+    cout << "4. Peek Element" << endl;
+    cout << "5. Is Stack Empty?" << endl;
+    cout << "6. Is Stack Full?" << endl;
     cout << "Enter your choice: ";
     cin >> choice;
     cout << "*********************" << endl;
