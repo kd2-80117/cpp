@@ -58,7 +58,7 @@ public:
     {
         return this->rollno;
     }
-    //friend void sortRecords(Student arr[], int size);
+    // friend void sortRecords(Student arr[], int size);
 };
 // void sortRecords(Student arr[], int size)
 // {
