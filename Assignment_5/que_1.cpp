@@ -112,31 +112,74 @@ int searchRecords(Student arr[], int size)
     }
     return -1;
 }
+int menu()
+{
+    int choice;
+    cout << endl
+         << endl
+         << "********** Menu **********" << endl;
+    cout << "0. Exit" << endl;
+    cout << "1. Accept Student" << endl;
+    cout << "2. Print Student" << endl;
+    cout << "3. Search Roll no" << endl;
+    cout << "4. Sorting" << endl;
+    cout << "Enter Choice:";
+    cin >> choice;
+    cout << endl
+         << "**************************" << endl;
+    return choice;
+}
 int main()
 {
+
+    int choice;
     int arrSize;
+    int res;
     cout << "Enter array size:";
     cin >> arrSize;
     Student arr[arrSize];
-    for (int i = 0; i < arrSize; i++)
-        arr[i].acceptStudent();
-    cout << endl
-         << "Student Details are" << endl;
-    for (int i = 0; i < arrSize; i++)
-        arr[i].printStudent();
-    int res = searchRecords(arr, arrSize);
-    if (res != -1)
+
+    while ((choice = menu()) != 0)
     {
-        cout << endl
-             << "Roll no found. Index is " << res << endl;
+        switch (choice)
+        {
+        case 1:
+            for (int i = 0; i < arrSize; i++)
+                arr[i].acceptStudent();
+
+            break;
+
+        case 2:
+            cout << endl
+                 << "Student Details are" << endl;
+            for (int i = 0; i < arrSize; i++)
+                arr[i].printStudent();
+            break;
+        case 3:
+            res = searchRecords(arr, arrSize);
+            if (res != -1)
+            {
+                cout << endl
+                     << "Roll no found. Index is " << res << endl;
+            }
+            else
+                cout << endl
+                     << "Roll no not found." << endl;
+            break;
+        case 4:
+            sortRecords(arr, arrSize);
+            cout << endl
+                 << "Sorted Student Details are" << endl;
+            for (int i = 0; i < arrSize; i++)
+                arr[i].printStudent();
+            break;
+
+        default:
+            cout << endl
+                 << "Wrong choice Entered :(" << endl;
+            break;
+        }
     }
-    else
-        cout << endl
-             << "Roll no not found." << endl;
-    sortRecords(arr, arrSize);
-    cout << endl
-         << "Sorted Student Details are" << endl;
-    for (int i = 0; i < arrSize; i++)
-        arr[i].printStudent();
+    cout << "Thank you for using the app :)" << endl;
     return 0;
 }

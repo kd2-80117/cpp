@@ -31,6 +31,14 @@ public:
             arr[i] = new int[this->length];
         }
     }
+    ~Matrix()
+    {
+        for (int i = 0; i < length; i++)
+        {
+            delete arr[i];
+        }
+        delete[] arr;
+    }
     void acceptMatrix()
     {
         for (int i = 0; i < length; i++)
