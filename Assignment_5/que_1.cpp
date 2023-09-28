@@ -58,21 +58,49 @@ public:
     {
         return this->rollno;
     }
+    //friend void sortRecords(Student arr[], int size);
 };
+// void sortRecords(Student arr[], int size)
+// {
+
+//     for (int i = 0; i <= size - 2; i++)
+//     {
+//         int min = i;
+//         for (int j = i; j <= size - 1; j++)
+//         {
+//             if (arr[j].rollno < arr[min].rollno)
+//             {
+//                 min = j;
+//             }
+//         }
+//         Student temp = arr[min];
+//         arr[min] = arr[i];
+//         arr[i] = temp;
+//     }
+// }
 void sortRecords(Student arr[], int size)
 {
-    for (int i = 0; i < size; i++)
+
+    for (int i = 0; i <= size - 2; i++)
     {
-        for (int j = 0; j < size; j++)
+        int min = i;
+        for (int j = i; j <= size - 1; j++)
         {
-            
+            if (arr[j].getRollno() < arr[min].getRollno())
+            {
+                min = j;
+            }
         }
+        Student temp = arr[min];
+        arr[min] = arr[i];
+        arr[i] = temp;
     }
 }
 int searchRecords(Student arr[], int size)
 {
     int key;
-    cout << "Enter roll no to search: ";
+    cout << endl
+         << "Enter roll no to search: ";
     cin >> key;
     for (int i = 0; i < size; i++)
     {
@@ -92,16 +120,23 @@ int main()
     Student arr[arrSize];
     for (int i = 0; i < arrSize; i++)
         arr[i].acceptStudent();
-
+    cout << endl
+         << "Student Details are" << endl;
     for (int i = 0; i < arrSize; i++)
         arr[i].printStudent();
-
-    if (int res = searchRecords(arr, arrSize) > -1)
+    int res = searchRecords(arr, arrSize);
+    if (res != -1)
     {
-        cout << "Roll no found. Index is " << res << endl;
+        cout << endl
+             << "Roll no found. Index is " << res << endl;
     }
     else
-        cout << "Roll no not found." << endl;
-
+        cout << endl
+             << "Roll no not found." << endl;
+    sortRecords(arr, arrSize);
+    cout << endl
+         << "Sorted Student Details are" << endl;
+    for (int i = 0; i < arrSize; i++)
+        arr[i].printStudent();
     return 0;
 }
