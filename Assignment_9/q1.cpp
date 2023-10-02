@@ -1,4 +1,4 @@
-/*********************************** ASSIGNMENT 8 QUESTION 2 ************************************/
+/*********************************** ASSIGNMENT 9 QUESTION 1 ************************************/
 
 // Q1. Write a user defined function factorial() that calculates factorial of given number and it throws
 // exception if number entered by user is negative.

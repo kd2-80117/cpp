@@ -16,6 +16,30 @@ enum account_type
     CURRENT = 2,
     DMAT = 3
 };
+class insufficient_funds
+{
+private:
+    int accid;
+    double cur_balance;
+    double withdraw_amount;
+
+public:
+    insufficient_funds(int accid, double cur_balance, double withdraw_amount)
+    {
+        this->accid = accid;
+        this->cur_balance = cur_balance;
+        this->withdraw_amount = withdraw_amount;
+    }
+    void display()
+    {
+        cout << "ERROR : INSUFFICIENT FUND" << endl;
+        cout << "Sorry! You can't withdraw ₹" << this->withdraw_amount << " as you have ₹ " << this->cur_balance << " funds in your Bank account." << endl;
+    }
+    void display2(string type)
+    {
+        cout << type << " amount cannot be equal to or less than zero." << endl;
+    }
+};
 
 class Account
 {
@@ -36,6 +60,7 @@ public:
     }
     void accept()
     {
+
         int choice;
         cout << "Enter id = ";
         cin >> id;
@@ -92,31 +117,23 @@ public:
     }
     void deposit(double amount)
     {
+        if (amount <= 0)
+            throw insufficient_funds(this->id, this->balance, amount);
         this->balance += amount;
         cout << "Updated balance = ₹ " << this->balance << endl;
     }
     void withdraw(double amount)
     {
+        if (amount <= 0)
+            throw insufficient_funds(this->id, this->balance, amount);
+        if (amount > this->balance)
+            throw insufficient_funds(this->id, this->balance, amount);
+
         this->balance -= amount;
         cout << "Updated balance = ₹ " << this->balance << endl;
     }
 };
 
-class insufficient_funds
-{
-private:
-    int accid;
-    double cur_balance;
-    double withdraw_amount;
-
-public:
-    insufficient_funds(int, double, double)
-    {
-    }
-    void display()
-    {
-    }
-};
 int menu()
 {
     int choice;
@@ -157,11 +174,19 @@ int main()
             cin >> id;
             cout << "Enter deposit amount = ";
             cin >> amt;
+
             for (int i = 0; i < size; i++)
             {
                 if (arr[i]->get_id() == id)
                 {
-                    arr[i]->deposit(amt);
+                    try
+                    {
+                        arr[i]->deposit(amt);
+                    }
+                    catch (insufficient_funds i)
+                    {
+                        i.display2("Deposit");
+                    }
                     break;
                 }
                 else
@@ -175,13 +200,23 @@ int main()
         case 3:
             cout << "Enter Account ID = ";
             cin >> id;
-            cout << "Enter withdraw amount = ";
-            cin >> amt;
+
             for (int i = 0; i < size; i++)
             {
                 if (arr[i]->get_id() == id)
                 {
-                    arr[i]->withdraw(amt);
+                    cout << "Enter withdraw amount = ";
+                     cin >> amt;
+                    
+                    try
+                    {
+                        arr[i]->withdraw(amt);
+                    }
+                    catch (insufficient_funds i)
+                    {
+                        i.display();
+                        i.display2("Withdraw");
+                    }
                     break;
                 }
                 else
