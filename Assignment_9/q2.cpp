@@ -249,7 +249,7 @@ int main()
             break;
         }
     }
-    for (int j = 0; i < i; j++)
+    for (int j = 0; j < i; j++)
     {
         delete arr[j];
     }
