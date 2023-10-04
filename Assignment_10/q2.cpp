@@ -138,7 +138,9 @@ int menu()
     cout << "1. Create Account" << endl;
     cout << "2. Deposit Amount" << endl;
     cout << "3. Withdraw Amount" << endl;
-    cout << "4. Display Account Details" << endl;
+    cout << "4. Search Account Details" << endl;
+    cout << "5. Display all Account Details in forward order" << endl;
+    cout << "6. Display all Account Details in reverse order" << endl;
     cout << "Enter your choice: ";
     cin >> choice;
     cout << "----------------------" << endl;
@@ -149,7 +151,7 @@ int main()
     int size = 5;
     // Account *arr[size];
     vector<Account *> accList;
-    int choice, id, amt, i = 0;
+    int choice, id, amt;
 
     while ((choice = menu()) != 0)
     {
@@ -165,40 +167,15 @@ int main()
             // else
             //     cout << "Cannot create bank account." << endl;
             // break;
-
-            Account *ptr = new Account();
-            ptr->accept();
-            accList.push_back(ptr);
-
+            {
+                Account *ptr = new Account();
+                ptr->accept();
+                accList.push_back(ptr);
+            }
             break;
 
         case 2:
-            // cout << "Enter Account ID = ";
-            // cin >> id;
-            // cout << "Enter deposit amount = ";
-            // cin >> amt;
 
-            // for (int i = 0; i < size; i++)
-            // {
-            //     if (arr[i]->get_id() == id)
-            //     {
-            //         try
-            //         {
-            //             arr[i]->deposit(amt);
-            //         }
-            //         catch (insufficient_funds i)
-            //         {
-            //             i.display2("Deposit");
-            //         }
-            //         break;
-            //     }
-            //     else
-            //     {
-            //         cout << "Wrong Account No entered..." << endl;
-            //         break;
-            //     }
-            // }
-            // break;
             cout << "Enter Account ID = ";
             cin >> id;
             cout << "Enter deposit amount = ";
@@ -232,7 +209,7 @@ int main()
 
             for (int i = 0; i < accList.size(); i++)
             {
-                
+
                 if (accList.at(i)->get_id() == id)
                 {
                     cout << "Enter withdraw amount = ";
@@ -260,7 +237,7 @@ int main()
             cout << "Enter Account ID = ";
             cin >> id;
 
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < accList.size(); i++)
             {
                 if (accList.at(i)->get_id() == id)
                 {
@@ -273,6 +250,14 @@ int main()
                     break;
                 }
             }
+            break;
+        case 5:
+            for (int i = 0; i < accList.size(); i++)
+                accList.at(i)->display();
+            break;
+        case 6:
+            for (int i = accList.size() - 1; i >= 0; i--)
+                accList.at(i)->display();
             break;
         default:
             cout << "Wrong choice entered." << endl;

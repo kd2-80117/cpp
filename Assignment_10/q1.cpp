@@ -104,43 +104,44 @@ public:
     }
 };
 
+
 int main()
 {
-    Stack<Box *> b(5);
-    b.push(new Box());
-    b.push(new Box());
-    b.push(new Box());
-    // for (int i = 0; i < b.get_size(); i++)
-    // {
-    //     b.get_top(i)->acceptParameter();
-    // }
+    Stack<int> s1(3);
+    s1.push(1);
+    s1.push(2);
+    s1.push(3);
+    s1.peek();
+    s1.displayStack();
+    s1.pop();
+    s1.pop();
+    s1.displayStack();
+    s1.peek();
 
-    b.displayStack();
-}
-
-int main1()
-{
-    // Stack<int> s1(3);
-    // s1.push(1);
-    // s1.push(2);
-    // s1.push(3);
-    // s1.peek();
-    // s1.displayStack();
-    // s1.pop();
-    // s1.pop();
-    // s1.displayStack();
-    // s1.peek();
-
-    // Stack<char> s1(3);
-    // s1.push('A');
-    // s1.push('B');
-    // s1.push('C');
-    // s1.peek();
-    // s1.displayStack();
-    // s1.pop();
-    // s1.pop();
-    // s1.displayStack();
-    // s1.peek();
+    Stack<char> s2(3);
+    s2.push('A');
+    s2.push('B');
+    s2.push('C');
+    s2.peek();
+    s2.displayStack();
+    s2.pop();
+    s2.pop();
+    s2.displayStack();
+    s2.peek();
 
     return 0;
 }
+
+// int main1()
+// {
+//     Stack<Box *> b(5);
+//     b.push(new Box());
+//     b.push(new Box());
+//     b.push(new Box());
+//     // for (int i = 0; i < b.get_size(); i++)
+//     // {
+//     //     b.get_top(i)->acceptParameter();
+//     // }
+
+//     b.displayStack();
+// }

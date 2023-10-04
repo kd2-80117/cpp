@@ -159,7 +159,7 @@ int main()
         switch (choice)
         {
         case 1:
-            if (i < 5)
+            if (i < size)
             {
                 arr[i] = new Account;
                 arr[i]->accept();
@@ -189,11 +189,11 @@ int main()
                     }
                     break;
                 }
-                else
-                {
-                    cout << "Wrong Account No entered..." << endl;
-                    break;
-                }
+                // else
+                // {
+                //     cout << "Wrong Account No entered..." << endl;
+                //     break;
+                // }
             }
 
             break;
@@ -206,8 +206,8 @@ int main()
                 if (arr[i]->get_id() == id)
                 {
                     cout << "Enter withdraw amount = ";
-                     cin >> amt;
-                    
+                    cin >> amt;
+
                     try
                     {
                         arr[i]->withdraw(amt);
@@ -219,12 +219,10 @@ int main()
                     }
                     break;
                 }
-                else
-                {
-                    cout << "Wrong Account No entered..." << endl;
-                    break;
-                }
             }
+
+            // cout << "Wrong Account No entered..." << endl;
+
             break;
         case 4:
             cout << "Enter Account ID = ";
